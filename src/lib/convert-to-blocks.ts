@@ -1,7 +1,7 @@
 // Convertir texto plano a formato blocks de Strapi
 // El formato debe ser: array de objetos con type: "paragraph" y children que contienen objetos con type: "text" y text
 
-export function convertTextToBlocks(text: any): any[] {
+export function convertTextToBlocks(text: any, h2?: string): any[] {
   if (!text || String(text).trim() === '') {
     // Retornar un bloque vacío
     return [
@@ -47,6 +47,15 @@ export function convertTextToBlocks(text: any): any[] {
         children: [{ type: 'text', text: '' }],
       },
     ];
+  }
+
+  // Prepend H2 heading block if provided
+  if (h2 && String(h2).trim() !== '') {
+    blocks.unshift({
+      type: 'heading',
+      level: 2,
+      children: [{ type: 'text', text: String(h2).trim() }],
+    });
   }
 
   return blocks;

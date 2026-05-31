@@ -15,6 +15,7 @@ export interface ExcelPropertyRow {
   is_featured?: string | boolean;
   estimated_completion?: string;
   highlight?: string;
+  h2?: string;
   main_image: string; // URL
   gallery?: string; // URLs separadas por comas
   category?: string; // Nombre o slug

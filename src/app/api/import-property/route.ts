@@ -62,7 +62,7 @@ export async function POST(request: Request) {
 
     const propertyData: PropertyToCreate = {
       title: String(row.title).trim(),
-      description: convertTextToBlocks(row.description),
+      description: convertTextToBlocks(row.description, row.h2),
       price: parseFloat(String(row.price)),
       address: String(row.address).trim(),
       bedrooms: parseInt(String(row.bedrooms)),
